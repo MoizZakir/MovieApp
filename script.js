@@ -89,7 +89,7 @@ result.forEach((vals)=>{
       const inputElem=search.value;
       const strElem=str.value;
       const lanElem=lang.value;
-      document.getElementById('tbl').style.display='table'
+      
       //console.log(inputElem);
       const output=result.filter(function(data){
         
@@ -110,7 +110,7 @@ result.forEach((vals)=>{
       
       trows.appendChild(tdown)
     })   
-    
+    document.getElementById('tbl').style.display='table'
     
       // console.log(output)
     }

@@ -83,7 +83,7 @@ result.forEach((vals)=>{
   
   
   
-  
+let err=document.getElementById('heading');
     function searching(){
       
       const inputElem=search.value;
@@ -91,6 +91,16 @@ result.forEach((vals)=>{
       const lanElem=lang.value;
       
       //console.log(inputElem);
+      if (inputElem===""&&strElem===""&&lanElem===""){
+        
+        err.innerText='Please type atleast one field'
+        err.style.textAlign='centre'
+        err.style.marginTop='20px'
+        err.style.color='red'
+      }
+      else{
+        err.style.display='none'
+        document.getElementById('tbl').style.display='table'
       const output=result.filter(function(data){
         
         
@@ -99,6 +109,10 @@ result.forEach((vals)=>{
           data.original_language.includes(lanElem))
            
     })
+    
+    
+    
+      
     output.forEach(movs=>{
       let tdown=document.createElement('tr')
       tdown.innerHTML=`
@@ -110,7 +124,8 @@ result.forEach((vals)=>{
       
       trows.appendChild(tdown)
     })   
-    document.getElementById('tbl').style.display='table'
+    
+      }
     
       // console.log(output)
     }

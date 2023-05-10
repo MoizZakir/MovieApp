@@ -3,28 +3,20 @@
   const endYear = 2021;
   const arr = [];
 
-  const movieGenres = ["Action","Adventure","Animation","Biography","Comedy","Crime","Documentary","Drama","Family","Fantasy","Film-Noir","History","Horror","Music","Musical","Mystery","Romance","Sci-Fi","Short","Sport","Superhero","Thriller","War","Western"]
-  ;
   
-
 for (let year = startYear; year <= endYear; year++) {
   arr.push(year);
 }
 
-
-
+const response=await fetch("./data.json");
+const result= await response.json();
+var search=document.getElementById('year');
+var button=document.getElementById('btn');
+var str=document.getElementById('searchelem');
+var lang=document.getElementById('Lan');
+trows=document.getElementById('tbbody')
+table=document.getElementById('tbl');
   
-  
-  
-
-  const response=await fetch("./data.json");
-  const result= await response.json();
-  var search=document.getElementById('year');
-  var button=document.getElementById('btn');
-  var str=document.getElementById('searchelem');
-  var lang=document.getElementById('Lan');
-  trows=document.getElementById('tbbody')
-  table=document.getElementById('tbl');
   arr.forEach((val)=>{
     var opt=document.createElement('option');
     opt.innerText=val
@@ -34,12 +26,7 @@ for (let year = startYear; year <= endYear; year++) {
   
 });
 
-// movieGenres.forEach((gen)=>{
-//   var movie_option=document.createElement('option');
-//   movie_option.innerText=gen;
-//   movie_option.value=gen;
-//   str.appendChild(movie_option)
-// })
+
 
 let uniqueArr = [];
    result.forEach(dat=>{
@@ -60,31 +47,17 @@ let genaray=[];
 
 result.forEach((vals)=>{
   let arrval=vals.genres
-  // genaray.push(vals.genres)
-  
-  
-  // arrval.forEach((vas)=>{
-  //   let vaa=vas;
-  //   if (!genaray.includes(vaa)) {
-  //     genaray.push(vaa)
 
-  //   }
-    
-    
-  // });
-    // console.log(vaa)
-    
  
 
-});//console.log(this.genaray)
-// console.log(genaray)
+});
 
-    
-  
-  
-  
+
 let err=document.getElementById('heading');
+let count=0
+
     function searching(){
+      count++
       
       const inputElem=search.value;
       const strElem=str.value;
@@ -99,20 +72,20 @@ let err=document.getElementById('heading');
         err.style.color='red'
       }
       else{
+       
+          
         err.style.display='none'
-        document.getElementById('tbl').style.display='table'
+        // document.getElementById('tbl').style.display='table'
       const output=result.filter(function(data){
         
         
           return (data.release_date.toLowerCase().includes(inputElem)&&
           data.genres.toString().toLowerCase().includes(strElem)&& 
           data.original_language.includes(lanElem))
+          
            
     })
-    
-    
-    
-      
+     let Section=document.getElementById('sections');
     output.forEach(movs=>{
       let tdown=document.createElement('tr')
       tdown.innerHTML=`
@@ -120,17 +93,25 @@ let err=document.getElementById('heading');
       <td>${movs.tagline}</td>
       <td>${movs.vote_average}</td>
       <td><img src="https://image.tmdb.org/t/p/w45${movs.poster_path}" alt=""></td>`
-   
       
+      let sec=document.createElement('section');
+      sec.style.border='1px solid purple'
+      sec.style.margin='12px 20px 30px'
+      sec.innerHTML=`
+      <p>${movs.title}</p>
+      <img src="https://image.tmdb.org/t/p/h100${movs.poster_path}" alt="">
+      <p>${movs.tagline}</p>
+      <p>${movs.vote_average}</p>
+      
+      `
+   
+      Section.appendChild(sec)
       trows.appendChild(tdown)
     })   
     
       }
-    
-      // console.log(output)
     }
   
   button.addEventListener('click',searching)
-//console.log(result)
-// console.log(str.value)
+
 })();

@@ -6,11 +6,17 @@
 
     
 }
+h3{
+   
+    color: brown;
+    
+}
 table{display: none;}
     
 section{
     
-    display:block;}
+    display:block;
+}
 
 
 label{
@@ -49,6 +55,12 @@ a{
     }
     table{display: table;}
     
+}
+h3{
+    position: relative;
+    text-align: center;
+    color: brown;
+
 }
 
 /* button{

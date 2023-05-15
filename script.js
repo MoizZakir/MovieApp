@@ -10,6 +10,7 @@ for (let year = startYear; year <= endYear; year++) {
 
 const response=await fetch("./data.json");
 const result= await response.json();
+
 var search=document.getElementById('year');
 var button=document.getElementById('btn');
 var str=document.getElementById('searchelem');
@@ -43,21 +44,21 @@ let uniqueArr = [];
     lang.appendChild(zub)
   });
 //  console.log(uniqueArr)
-let genaray=[];
+// let genaray=[];
 
-result.forEach((vals)=>{
-  let arrval=vals.genres
+// result.forEach((vals)=>{
+//   let arrval=vals.genres
 
  
 
-});
+// });
 
 
 let err=document.getElementById('heading');
 let count=0
 
     function searching(){
-      count++
+     count++
       
       const inputElem=search.value;
       const strElem=str.value;
@@ -78,13 +79,16 @@ let count=0
         // document.getElementById('tbl').style.display='table'
       const output=result.filter(function(data){
         
-        
+
           return (data.release_date.toLowerCase().includes(inputElem)&&
           data.genres.toString().toLowerCase().includes(strElem)&& 
           data.original_language.includes(lanElem))
           
            
     })
+    if (output.length==0){document.getElementById('nodata').innerText='No Data Found!'}
+    else{
+      document.getElementById('nodata').style.display='none'
      let Section=document.getElementById('sections');
     output.forEach(movs=>{
       let tdown=document.createElement('tr')
@@ -96,12 +100,14 @@ let count=0
       
       let sec=document.createElement('section');
       sec.style.border='1px solid purple'
+      sec.style.borderRadius='15px'
+      sec.style.boxShadow='13px 10px lightgrey';
       sec.style.margin='12px 20px 30px'
       sec.innerHTML=`
-      <p>${movs.title}</p>
+      <h4>${movs.title}</h4>
       <img src="https://image.tmdb.org/t/p/h100${movs.poster_path}" alt="">
-      <p>${movs.tagline}</p>
-      <p>${movs.vote_average}</p>
+      <p style='color:blue;'>${movs.tagline}</p>
+      <p style='color:green;'>${movs.vote_average}</p>
       
       `
    
@@ -110,7 +116,7 @@ let count=0
     })   
     
       }
-    }
+    }}
   
   button.addEventListener('click',searching)
 

@@ -2,9 +2,13 @@
     margin-top: 12px;
     width:25%;
     display: list-item;
+    border-radius: 11px;
    
 
     
+}
+    input{
+    border-radius: 10px;
 }
 h3{
    
@@ -45,9 +49,12 @@ a{
 @media only screen and (min-width: 992px){select{
     margin-top: 12px;
     width:25%;
-    
+        border-radius: 11px;
    
     }
+        input{
+    border-radius: 10px;
+}
     section{
         border: 1px solid;
         display:none

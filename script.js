@@ -63,7 +63,7 @@ let count=0
       const inputElem=search.value;
       const strElem=str.value;
       const lanElem=lang.value;
-      
+      output.splice(0,output.length);
       //console.log(inputElem);
       if (inputElem===""&&strElem===""&&lanElem===""){
         

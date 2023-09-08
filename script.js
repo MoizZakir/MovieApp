@@ -59,12 +59,12 @@ let count=0
 
     function searching(){
      count++
-      output.splice(0,output.length)
+  
       
       const inputElem=search.value;
       const strElem=str.value;
       const lanElem=lang.value;
-      output.splice(0,output.length);
+      
       //console.log(inputElem);
       if (inputElem===""&&strElem===""&&lanElem===""){
         
@@ -115,6 +115,7 @@ let count=0
       Section.appendChild(sec)
       trows.appendChild(tdown)
     })   
+      output.splice(0,output.length);
     
       }
     }}

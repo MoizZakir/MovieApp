@@ -59,6 +59,7 @@ let count=0
 
     function searching(){
      count++
+      output.splice(0,output.length)
       
       const inputElem=search.value;
       const strElem=str.value;

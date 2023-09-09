@@ -1,4 +1,5 @@
 (async function(){
+  //make year list from 1980 to 2021
   const startYear = 1980;
   const endYear = 2021;
   const arr = [];
@@ -7,9 +8,15 @@
 for (let year = startYear; year <= endYear; year++) {
   arr.push(year);
 }
+  //
+  
+//data call from json
 
 const response=await fetch("./data.json");
 const result= await response.json();
+  //
+
+//element get
 
 var search=document.getElementById('year');
 var button=document.getElementById('btn');
@@ -17,6 +24,9 @@ var str=document.getElementById('searchelem');
 var lang=document.getElementById('Lan');
 trows=document.getElementById('tbbody')
 table=document.getElementById('tbl');
+//
+
+//adding years in select feild
   
   arr.forEach((val)=>{
     var opt=document.createElement('option');
@@ -26,9 +36,10 @@ table=document.getElementById('tbl');
    search.appendChild(opt)
   
 });
+//
 
 
-
+//making language list from getting language propertty in json data
 let uniqueArr = [];
    result.forEach(dat=>{
      var a=dat.original_language
@@ -43,20 +54,14 @@ let uniqueArr = [];
     zub.value=zuban;
     lang.appendChild(zub)
   });
-//  console.log(uniqueArr)
-// let genaray=[];
+  
+//
 
-// result.forEach((vals)=>{
-//   let arrval=vals.genres
-
- 
-
-// });
-
-
+  
 let err=document.getElementById('heading');
 let count=0
-
+  
+// this function hit by button get use full data to show on website
     function searching(){
      count++
   
@@ -115,7 +120,6 @@ let count=0
       Section.appendChild(sec)
       trows.appendChild(tdown)
     })   
-      output.splice(0,output.length);
     
       }
     }}

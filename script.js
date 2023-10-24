@@ -60,6 +60,7 @@ let uniqueArr = [];
   
 let err=document.getElementById('heading');
 let count=0
+
   
 // this function hit by button get use full data to show on website
     function searching(){
@@ -96,9 +97,13 @@ let count=0
     else{
       document.getElementById('nodata').style.display='none'
      let Section=document.getElementById('sections');
+     trows.innerHTML=''
+
     output.forEach(movs=>{
-      let tdown=document.createElement('tr')
-      tdown.innerHTML=`
+       tdown=document.createElement('tr')
+      
+      tdown.innerHTML+=`
+      
       <td >${movs.title}</td>
       <td>${movs.tagline}</td>
       <td>${movs.vote_average}</td>
@@ -119,10 +124,12 @@ let count=0
    
       Section.appendChild(sec)
       trows.appendChild(tdown)
-    })   
+    })  
+ 
     
       }
     }}
+    
   
   button.addEventListener('click',searching)
 
